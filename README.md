@@ -2,10 +2,9 @@
 
 # Zen (Python) 
 
->Not sure if C has taught me to think like a programmer or python is just really easy.
 
 <details>
-<summary>The Zen of Python, by Tim Peters</summary>
+<summary> Python Programming Projects, by Emmanuel Sanusi</summary>
 <br>
 Beautiful is better than ugly.<br>
 Explicit is better than implicit.<br>
