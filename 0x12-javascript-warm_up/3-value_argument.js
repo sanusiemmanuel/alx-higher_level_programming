@@ -1,7 +1,8 @@
 #!/usr/bin/node
-const array = process.argv.slice(2);
-if (array[0] === undefined) {
+
+const process = require('process');
+if (process.argv[2] === undefined) {
   console.log('No argument');
 } else {
-  console.log(array[0]);
+  console.log(process.argv[2]);
 }

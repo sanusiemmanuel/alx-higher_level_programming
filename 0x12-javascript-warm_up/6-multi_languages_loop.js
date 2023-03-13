@@ -1,6 +1,6 @@
 #!/usr/bin/node
-const phrases = ['C is fun', 'Python is cool', 'JavaScript is amazing'];
-let i;
-for (i in phrases) {
-  console.log(phrases[i]);
+
+const Lang = ['C is fun', 'Python is cool', 'Javascript is amazing'];
+for (let index = 0; index < Lang.length; index++) {
+  console.log(Lang[index]);
 }
