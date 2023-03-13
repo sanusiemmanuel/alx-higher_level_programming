@@ -1,12 +1,15 @@
 #!/usr/bin/node
 
-const process = require('process');
-const arg = parseInt(process.argv[2]);
-function factorial (arg) {
-  if (arg === 1 || isNaN(arg)) {
+const a = parseInt(process.argv[2]);
+
+function factorial (a) {
+  if (Number.isNaN(a) || a === 0) {
     return (1);
-  } else {
-    return (arg * factorial(arg - 1));
   }
+  if (a < 0) {
+    return (-1);
+  }
+  return (a * factorial(a - 1));
 }
-console.log(factorial(arg));
+
+console.log(factorial(a));
