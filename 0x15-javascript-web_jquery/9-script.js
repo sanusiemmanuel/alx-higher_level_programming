@@ -1,15 +1,9 @@
+const $ = window.$;
+const url = 'https://fourtonfish.com/hellosalut/?lang=fr';
+
 $(document).ready(function () {
-  const salutUri = 'https://fourtonfish.com/hellosalut/?lang=fr';
-  const $helloElement = $('div#hello');
-
-  function getSalut () {
-    return $.get({
-      url: salutUri,
-      dataType: 'json'
-    });
-  }
-
-  getSalut().then((res) => {
-    $helloElement.text(res.hello);
+  $.getJSON(url, function (resp) {
+    const hello = resp.hello;
+    $('#hello').text(hello);
   });
 });

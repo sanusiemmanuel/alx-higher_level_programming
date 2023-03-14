@@ -1,25 +1,25 @@
 #!/usr/bin/node
 
 const request = require('request');
+const urlApi = process.argv[2];
 
-request(process.argv[2], function (err, _res, body) {
-  if (err) {
-    console.log(err);
+request(urlApi, function (error, response, body) {
+  if (error) {
+    console.log(error); // Print the error if one occurred
   } else {
-    const completedTasksByUsers = {};
-    body = JSON.parse(body);
+    const jsonObj = JSON.parse(body);
+    const newDict = {};
+    let key = '';
 
-    for (let i = 0; i < body.length; ++i) {
-      const userId = body[i].userId;
-      const completed = body[i].completed;
-
-      if (completed && !completedTasksByUsers[userId]) {
-        completedTasksByUsers[userId] = 0;
+    for (let i = 0; i < jsonObj.length; i++) {
+      key = jsonObj[i].userId.toString();
+      if (!newDict[key] && jsonObj[i].completed) {
+        newDict[key] = 1;
+      } else if (jsonObj[i].completed) {
+        newDict[key]++;
       }
-
-      if (completed) ++completedTasksByUsers[userId];
     }
 
-    console.log(completedTasksByUsers);
+    console.log(newDict);
   }
 });
