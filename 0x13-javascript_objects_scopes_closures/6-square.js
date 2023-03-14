@@ -1,19 +1,14 @@
 #!/usr/bin/node
 
-// Print function with custom characters to represent the Square
+const SquarePar = require('./5-square.js');
 
-const OldSquare = require('./4-rectangle');
-
-module.exports = class Square extends OldSquare {
-  constructor (size) {
-    super(size, size);
-  }
-
-  double () {
-    super.double();
-  }
-
-  charPrint (c = 'X') {
-    super.print(c);
+module.exports = class Square extends SquarePar {
+  charPrint (c) {
+    if (!c) {
+      c = 'X';
+    }
+    for (let i = 0; i < this.height; i++) {
+      console.log(c.repeat(this.width));
+    }
   }
 };
