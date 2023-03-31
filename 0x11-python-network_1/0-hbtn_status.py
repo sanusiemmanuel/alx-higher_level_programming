@@ -1,9 +1,15 @@
 #!/usr/bin/python3
-"""Fetches the URL: https://intranet.hbtn.io/status
-"""
+"""url fetching script in python"""
+
 import urllib.request
 
-with urllib.request.urlopen('https://intranet.hbtn.io/status') as url:
-    s = url.read()
-    req = "Body response:\n\t- type: {}\n\t- content: {}\n\t- utf8 content: {}"
-    print(req.format(type(s), s, s.decode('utf-8')))
+url = 'https://intranet.hbtn.io/status'
+
+
+with urllib.request.urlopen(url) as response:
+    html = response.read()
+    type_html = type(html)
+    print("Body response:")
+    print("\t- type: {}".format(type_html))
+    print("\t- content: {}".format(html))
+    print("\t- utf8 content: {}".format(html.decode('utf-8')))
