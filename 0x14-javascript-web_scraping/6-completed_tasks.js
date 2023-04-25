@@ -1,25 +1,22 @@
 #!/usr/bin/node
 
-const request = require('request');
-const urlApi = process.argv[2];
+const tasks = require('request');
 
-request(urlApi, function (error, response, body) {
+tasks.get(process.argv[2], { json: true }, (error, response, body) => {
   if (error) {
-    console.log(error); // Print the error if one occurred
-  } else {
-    const jsonObj = JSON.parse(body);
-    const newDict = {};
-    let key = '';
-
-    for (let i = 0; i < jsonObj.length; i++) {
-      key = jsonObj[i].userId.toString();
-      if (!newDict[key] && jsonObj[i].completed) {
-        newDict[key] = 1;
-      } else if (jsonObj[i].completed) {
-        newDict[key]++;
-      }
-    }
-
-    console.log(newDict);
   }
+
+  const product = {
+  };
+
+  for (const task of body) {
+    if (task.completed === true) {
+      if (product[task.userId] === undefined) {
+        product[task.userId] = 0;
+      }
+      product[task.userId]++;
+    }
+  }
+
+  console.log(product);
 });
