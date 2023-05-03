@@ -1,5 +1,1 @@
-const $ = window.$;
-$('#update_header').click(function () {
-  const htmlString = 'New Header!!!';
-  $('header').text(htmlString);
-});
+$('div#update_header').on('click', () => $('header').text('New Header!!!'));
